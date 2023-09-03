@@ -14,7 +14,7 @@ WORKDIR /app
 
 # Copy your project files into the container
 COPY requirements.txt Makefile ./
-COPY ./project_name /app/project_name
+COPY ./ids706_python_template /app/ids706_python_template
 
 # Create a virtual environment and install dependencies
 RUN python -m venv venv \
@@ -27,4 +27,4 @@ RUN python -m venv venv \
 USER ${USER}
 
 # Specify the command to run your application
-CMD ["python", "-m", "project_name"]
+CMD ["python", "-m", "ids706_python_template"]

@@ -1,4 +1,4 @@
 include LICENSE
 include HISTORY.md
 graft tests
-graft project_name
+graft ids706_python_template
