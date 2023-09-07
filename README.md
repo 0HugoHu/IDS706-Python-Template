@@ -28,6 +28,26 @@ Yadong (Hugo) Hu
     ├── conftest.py          # Configuration, hooks, and fixtures for pytest
     ├── __init__.py          # This tells Python that this is a test package
     └── test_base.py         # The base test case for the project
+└── .tutorial                # Screenshots of how to run docker
 ```
 
-To build and run the project, go to the ```Dockerfile```, and make sure your ##Docker## is running on your computer.
+<br />
+To build and run the project, go to the ```Dockerfile```, and make sure your **Docker** is running on your computer.
+
+You can hit the run button on the first line if you are using the PyCharm IDE:
+
+![](/.tutorial/step1.png)
+
+Or you need to configure your Dockerfile configuration (please use all default values, connect to Docker Daemon on Mac with unix:///var/run/docker.sock):
+
+![](/.tutorial/step2.png)
+
+Then, hit run button, and the Docker image begins to build:
+
+![](/.tutorial/step3.png)
+
+The output should be a string:
+
+![](/.tutorial/step4.png)
+
+<br />
