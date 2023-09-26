@@ -32,6 +32,7 @@ Yadong (Hugo) Hu
 ```
 
 <br />
+
 To build and run the project, go to the ```Dockerfile```, and make sure your **Docker** is running on your computer.
 
 You can hit the run button on the first line if you are using the PyCharm IDE:
@@ -42,7 +43,7 @@ Or you need to configure your Dockerfile configuration (please use all default v
 
 ![](/.tutorial/step2.png)
 
-Then, hit run button, and the Docker image begins to build:
+Then, hit the run button, and the Docker image begins to build:
 
 ![](/.tutorial/step3.png)
 
