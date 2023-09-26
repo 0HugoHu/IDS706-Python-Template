@@ -17,11 +17,9 @@ COPY requirements.txt Makefile ./
 COPY ./ids706_python_template /app/ids706_python_template
 
 # Create a virtual environment and install dependencies
-RUN python -m venv venv \
-   && . venv/bin/activate \
-   && pip install --disable-pip-version-check --no-cache-dir -r requirements.txt \
-   && deactivate \
-   && rm -rf venv requirements.txt
+RUN pip install --disable-pip-version-check --no-cache-dir -r requirements.txt
+
+RUN chown -R ${USER}:${USER} /app
 
 # Switch to the non-root user (optional but recommended)
 USER ${USER}

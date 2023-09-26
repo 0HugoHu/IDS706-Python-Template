@@ -22,17 +22,17 @@ show:             ## Show the current environment.
 install:          ## Install the project in dev mode.
 	@if [ "$(USING_POETRY)" ]; then poetry install && exit; fi
 	@echo "Don't forget to run 'make virtualenv' if you got errors."
-	$(ENV_PREFIX)pip install -e .[test]
+	$(ENV_PREFIX)pip install --disable-pip-version-check --no-cache-dir -r requirements.txt
 
-.PHONY: fmt
-fmt:              ## Format code using black & isort.
+.PHONY: fmt format
+fmt format:              ## Format code using black & isort.
 	$(ENV_PREFIX)isort ids706_python_template/
 	$(ENV_PREFIX)black -l 79 ids706_python_template/
 	$(ENV_PREFIX)black -l 79 tests/
 
 .PHONY: lint
-lint:             ## Run pep8, black, mypy linters.
-	$(ENV_PREFIX)flake8 ids706_python_template/
+lint:             ## Run ruff, black, mypy linters.
+	$(ENV_PREFIX)ruff ids706_python_template/
 	$(ENV_PREFIX)black -l 79 --check ids706_python_template/
 	$(ENV_PREFIX)black -l 79 --check tests/
 	$(ENV_PREFIX)mypy --ignore-missing-imports ids706_python_template/
@@ -40,6 +40,7 @@ lint:             ## Run pep8, black, mypy linters.
 .PHONY: test
 test: lint        ## Run tests and generate coverage report.
 	$(ENV_PREFIX)pytest -v --cov-config .coveragerc --cov=ids706_python_template -l --tb=short --maxfail=1 tests/
+	#$(ENV_PREFIX)pytest --nbval ids706_python_template/Hugo-Project-1.ipynb
 	$(ENV_PREFIX)coverage xml
 	$(ENV_PREFIX)coverage html
 
@@ -109,6 +110,9 @@ switch-to-poetry: ## Switch to poetry package manager.
 init:             ## Initialize the project based on an application template.
 	@./.github/init.sh
 
+.PHONY: run
+run:              ## Execute the Python code.
+	$(ENV_PREFIX)python -m ids706_python_template
 
 # This project has been generated from rochacbruno/python-project-template
 # __author__ = 'rochacbruno'
